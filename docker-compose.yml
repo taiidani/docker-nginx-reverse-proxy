@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+    # The customized reverse proxy
+    proxy:
+        build: ./nginx
+        ports:
+            - 80:80
+
+    # A typical web container hosting the success page
+    web:
+        image: nginx:1-alpine
+        volumes:
+            - ./:/usr/share/nginx/html:ro
